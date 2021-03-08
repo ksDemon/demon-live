@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Side navigation -->
+<div class="sidenav">
+<a href="/">Home</a>
+<a href="/about">About</a>
+</div>
+
+
+<!-- Page content -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,10 +26,10 @@
     }
   </style>
 </head>
+
+<link rel="stylesheet" href="/css/style.css">
+
 <body>
-  <header>
-    <a href="/">Home</a> | <a href="/about">About</a>
-  </header>
   {{ content | safe }}
 </body>
 </html>
