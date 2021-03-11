@@ -51,3 +51,11 @@
     top: 5%;
     
   }
+
+  .search input[type=text] {
+    float: center;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    font-size: 17px;
+  }
