@@ -2,17 +2,19 @@
 title: MSC Search
 layout: base.njk
 ---
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 <div class="container">
   <h1>MSC Search by Code</h1>
   <p>Usa este buscador para códigos</p>
-
-<div class="search">
-    <form action="index.html" method="get"> 
-        <input type="text" placeholder="Search..." name="serialNumber" id="myInput"/>
-        <input type="submit" value="Submit" onclick="return myFunction()"/>
-    </form>
-</div>
+    <div class="search">
+        <form action="index.html" method="get"> 
+            <input type="text" placeholder="Search..." name="serialNumber" id="myInput"/>
+            <button type="submit" onclick="return myFunction()"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
 </div>
 
 
