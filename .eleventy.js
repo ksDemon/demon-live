@@ -2,7 +2,6 @@ module.exports = function(config) {
 
   config.addPassthroughCopy("src/js");
   config.addPassthroughCopy("src/css");
-  config.addPassthroughCopy("src/media");
   config.addPassthroughCopy("src/msc");
   return  {
     dir: {
@@ -10,5 +9,16 @@ module.exports = function(config) {
       output: "dist"
     }
   };
-
 };
+
+module.exports = function(config) {
+
+  config.addPassthroughCopy("src/media");
+  return  {
+    dir: {
+      input: "src/media",
+      output: "dist"
+    }
+  };
+};
+
