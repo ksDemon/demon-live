@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<body style="background-color:#181818;">
+<link rel="stylesheet" href="/css/item.css">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">  
+
+<head>
+  <style>
+      body {
+        text-align:left;
+      color:#bebebe;
+      }
+    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+</head>
+
+<!-- Side navigation -->
+<div class="sidenav">
+<style>
+    body {
+      text-align:center;
+      color:#bebebe;
+    }
+  </style>
+<img src="/media/logo.png" alt="logo" width="60%">
+<p></p>
+<a href="/">Inicio</a>
+<a href="/about">Información</a>
+<a href="/msc">MSC</a>
+<a href="/items">Items</a>
+
+</div>
+
+<div class="content">
+<h1>{{title}}</h1>
+<img src={{image}} alt="producto" width="10%">
+<p> Disponibilidad: {{stock}} unidades</p>
+<p> Precio: $ {{price}}</p>
+<p> {{ content | safe }}</p>
+</div>
+
+</html>
+

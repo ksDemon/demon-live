@@ -1,0 +1,31 @@
+---
+title: MSC Search
+layout: base.njk
+---
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<div class="container">
+  <h1>MSC Search by Code</h1>
+  <p>Usa este buscador para códigos</p>
+    <div class="search">
+        <form action="index.html" method="get"> 
+            <input type="text" placeholder="Search..." name="serialNumber" id="myInput"/>
+            <button type="submit" onclick="return myFunction()"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    link = "http://pages.demon.live/msc/"+filter.substring(0,2)+"/"+filter[2]+"/"+filter.substring(3,5);
+    console.log(link);
+    window.location.href = link;
+    return false;
+}
+</script>
