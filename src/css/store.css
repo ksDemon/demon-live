@@ -50,7 +50,7 @@
   }
 
   .content {
-    background-color: #202020;
+    background-color: #181818;
     position: absolute;
     width: 70%;
     height: auto;
@@ -59,18 +59,19 @@
     border-color: #202020;
     padding: 50px;
     margin: 20px;
+    padding-top: 0px;
     transform: translate(-37.5%, 0);
     top: 0%;
   }
 
   .item {
     color:#bebebe;
-    background-color: #181818;
+    background-color: #202020;
     float: left;
     width: 17%;
     height: auto;
     border: 15px;
-    border-color: #181818;
+    border-color: #202020;
     padding: 5px;
     margin: 15px;
     top: 5%;
