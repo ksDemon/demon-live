@@ -9,6 +9,11 @@ module.exports = function(config) {
       output: "dist"
     }
   };
+  config.addPassthroughCopy("src/media");
+  return  {
+    dir: {
+      input: "src/media",
+      output: "dist"
+    }
+  };
 };
-
-
