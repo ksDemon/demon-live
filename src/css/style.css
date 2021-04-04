@@ -1,3 +1,19 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #181818; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #bebebe; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #606060; 
+}
+
 .sidenav {
     height: 100%; /* Full-height: remove this if you want "auto" height */
     width: 20%; /* Set the width of the sidebar */
