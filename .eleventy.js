@@ -11,13 +11,4 @@ module.exports = function(config) {
   };
 };
 
-module.exports = function(config) {
 
-  config.addPassthroughCopy("src/media");
-  return  {
-    dir: {
-      input: "src/media",
-      output: "dist"
-    }
-  };
-};
