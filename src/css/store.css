@@ -104,3 +104,8 @@
     background: #ccc;
   }
   
+  .center-cropped {
+    object-fit: cover; /* Do not scale the image */
+    object-position: top; /* Center the image within the element */
+    height: 180px;
+  }
