@@ -5,6 +5,7 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon">  
 
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
       body {
         text-align:left;
@@ -41,6 +42,9 @@
 <p> {{ content | safe }}</p>
 <p id="id" style="font-size: 0px;">{{id}}</p>
 <script src="/js/readstock.js"></script>
+<script src="/js/cartcookie.js"></script>
+<button type="op" onclick="return sub()"><i class="fa fa-minus"></i></button>
+<button type="op" onclick="return add()"><i class="fa fa-plus"></i></button>
 
 </div>
 
