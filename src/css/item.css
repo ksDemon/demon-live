@@ -60,7 +60,14 @@
       margin: 20px;
       transform: translate(-30%, 0);
       top: 5%;
+      text-align: left;
+      align-items: center;
+      justify-content: center
       
+    }
+
+    h1 {
+      text-align: center;
     }
   
     .search input[type=text] {
@@ -84,4 +91,10 @@
     
     .search button:hover {
       background: #ccc;
+    }
+
+    .left {
+      display: block;
+      float: left;
+      width: 50%;
     }

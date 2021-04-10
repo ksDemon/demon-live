@@ -1,0 +1,1 @@
+GET https://sheets.googleapis.com/v4/spreadsheets/12wZxH_YKZ71AtlY8lrOkjK2DLOgjs9uy0-UfxEVWXKw/values/D2:D2?key=AIzaSyCzaVfKdBQ6GhatoH_q2JAoaZGn0d9VAl0
