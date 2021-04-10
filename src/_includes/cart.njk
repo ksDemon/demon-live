@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <body style="background-color:#181818;">
-<link rel="stylesheet" href="/css/item.css">
+<link rel="stylesheet" href="/css/cart.css">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">  
 
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
       body {
         text-align:left;
@@ -36,19 +35,7 @@
 </div>
 
 <div class="content">
-<h1>{{title}}</h1>
-<img src={{image}} alt="producto" width="40%" class="left" style="margin-right:100px">
-<p id="stock" style="margin-top:100px"> Disponibilidad: {{stock}} unidades</p>
-<p> Precio: {{price}}</p>
 <p> {{ content | safe }}</p>
-<p id="id" style="font-size: 0px;">{{id}}</p>
-<script src="/js/cartcookie.js"></script>
-<button class="op" onclick="return sub()"><i class="fa fa-minus"></i></button>
-<a href="/cart" class="op">
-  <p id="cart">0</p>
-  </a>
-<button class="op" onclick="return add()"><i class="fa fa-plus"></i></button>
-
 </div>
 
 </html>
