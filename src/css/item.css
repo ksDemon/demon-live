@@ -70,46 +70,28 @@
       text-align: center;
     }
   
-    .search input[type=text] {
-      float: center;
-      padding: 6px;
-      margin-top: 8px;
-      font-size: 17px;
-      border: none;
-    }
-  
-    .search button {
-      float: center;
-      padding: 6px 10px;
-      margin-top: 8px;
-      margin-right: 16px;
-      background: #ddd;
-      font-size: 17px;
-      border: none;
-      cursor: pointer;
-    }
-    
-    .search button:hover {
-      background: #ccc;
-    }
-
     .left {
       display: block;
       float: left;
       width: 50%;
     }
 
-    .op button {
-      float: center;
-      padding: 6px 10px;
-      margin-top: 8px;
+    .op {
       margin-right: 16px;
-      background: #ddd;
+      background: #606060;
       font-size: 17px;
       border: none;
       cursor: pointer;
     }
     
-    .op button:hover {
-      background: #ccc;
+    .op:hover {
+      background: #bebebe;
+    }
+
+    .op {
+      float: left;
+      width: 40px;
+      height: 40px;
+      color:black;
+      text-decoration: none;
     }

@@ -41,10 +41,12 @@
 <p> Precio: {{price}}</p>
 <p> {{ content | safe }}</p>
 <p id="id" style="font-size: 0px;">{{id}}</p>
-<script src="/js/readstock.js"></script>
 <script src="/js/cartcookie.js"></script>
-<button type="op" onclick="return sub()"><i class="fa fa-minus"></i></button>
-<button type="op" onclick="return add()"><i class="fa fa-plus"></i></button>
+<button class="op" onclick="return sub()"><i class="fa fa-minus"></i></button>
+<button class="op" onclick="return add()"><i class="fa fa-plus"></i></button>
+<a href="/cart" class="op">
+  <p style="text-align:center;" id="cart">0</p>
+</button>
 
 </div>
 
