@@ -78,19 +78,19 @@
 
     .op {
       position: relative;
-      background: #606060;
+      background: #181818;
       font-size: 17px;
       border: none;
       cursor: pointer;
       float: right;
       width: 40px;
       height: 40px;
-      color:black;
+      color: #bebebe;
       text-decoration: none;
     }
     
     .op:hover {
-      background: #bebebe;
+      background: #191919;
     }
 
     .op p{
@@ -109,6 +109,18 @@
     .fa-minus:hover{
       color:#f1f1f1;
     }
+
+    .fa-shopping-cart{
+      color: #181818;
+    }
     .fa-shopping-cart:hover{
       color:#f1f1f1;
     }
+
+    .fa-arrow-left{
+      color:#bebebe;
+    }
+    .fa-arrow-left:hover{
+      color:#f1f1f1;
+    }
+

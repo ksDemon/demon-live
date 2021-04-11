@@ -109,3 +109,9 @@
     object-position: top; /* Center the image within the element */
     height: 180px;
   }
+
+  .sus {
+    position: fixed;
+    bottom: 5%;
+    right:5%;
+  }

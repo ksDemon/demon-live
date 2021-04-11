@@ -67,7 +67,8 @@ function itemData(ID) {
          fun = "return remove("+ID+")"
          button.setAttribute("onclick", fun)
          button.appendChild(icon);
-         element.appendChild(button);
+         divb.appendChild(button);
+         element.appendChild(divb);
 
          aux = document.getElementById("total").innerHTML;
          aux = aux + price + "x" + cantidad
@@ -113,4 +114,7 @@ while (i<100){
     i++;
 }
 
-i = 0;
+if (document.getElementById("final").innerHTML == "$ 0"){
+    document.cookie = "T=$ 0; path=/;";
+    document.cookie = "t=0; path=/;";
+}
