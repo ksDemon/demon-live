@@ -102,3 +102,13 @@
       position: relative;
       margin-top: 10%;
     }
+
+    .fa-plus:hover{
+      color:#f1f1f1;
+    }
+    .fa-minus:hover{
+      color:#f1f1f1;
+    }
+    .fa-shopping-cart:hover{
+      color:#f1f1f1;
+    }

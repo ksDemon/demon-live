@@ -26,6 +26,11 @@ function getCookie(cname) {
     return 0;
   }
 
+function remove(ID){
+    document.cookie = ID + "=0; path=/;"
+    location.reload();
+}
+
 function itemData(ID) {
     let request = new XMLHttpRequest();
     request.open("GET", "https://sheets.googleapis.com/v4/spreadsheets/12wZxH_YKZ71AtlY8lrOkjK2DLOgjs9uy0-UfxEVWXKw/values/B" + ID + ":D" + ID + "?key=AIzaSyCzaVfKdBQ6GhatoH_q2JAoaZGn0d9VAl0");
@@ -41,7 +46,7 @@ function itemData(ID) {
          divb.setAttribute("id","div3")
 
          var para = document.createElement("p");
-         var node = document.createTextNode(" - " + item + " x " + cantidad);
+         var node = document.createTextNode(item + " x " + cantidad);
          var span = document.createElement("p");
          span.setAttribute("class", "price");
          var pnode = document.createTextNode(price + " x " + cantidad);
@@ -54,6 +59,15 @@ function itemData(ID) {
          var element = document.getElementById("div1");
          element.appendChild(div);
          element.appendChild(divb);
+
+         icon = document.createElement("i")
+         icon.setAttribute("class", "fa fa-times")
+         button = document.createElement("button");
+         button.setAttribute("class","op");
+         fun = "return remove("+ID+")"
+         button.setAttribute("onclick", fun)
+         button.appendChild(icon);
+         element.appendChild(button);
 
          aux = document.getElementById("total").innerHTML;
          aux = aux + price + "x" + cantidad
