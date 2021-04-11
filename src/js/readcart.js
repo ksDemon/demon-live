@@ -100,6 +100,8 @@ function itemData(ID) {
              i++;
          }
          document.getElementById("final").innerHTML = texto;
+         document.cookie = "T" + "="  + texto + "; path=/;";
+         document.cookie = "t" + "="  + total + "; path=/;";
     }
 }
 

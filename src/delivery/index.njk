@@ -1,0 +1,28 @@
+---
+title: Datos de Envío
+layout: delivery.njk
+---
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div id="div1" class="container">
+  <h1>Datos de Envío</h1>
+    <div class="data">
+      <form action="index.html" method="get">
+      <input class"input" placeholder="Nombre" type="text" name="name" id= "nameInput" required>
+      <input class"input" placeholder="Correo" type="text" name="email" id= "emailInput" required>
+      <input class"input" placeholder="Teléfono" type="text" name="phone" id= "phoneInput" required>
+      <input class"input" placeholder="País" type="text" name="country" id= "countryInput" required>
+      <input class"input" placeholder="Región" type="text" name="region" id= "regionInput" required>
+      <input class"input" placeholder="Cuidad" type="text" name="city" id= "cityInput" required>
+      <input class"input" placeholder="Dirección" type="text" name="direction" id= "directionInput" required>
+      </form>
+    </div>
+</div>
+
+<button class="op" type="submit" onclick="return myFunction()" style="background:#00FF00;"><i class="fa fa-usd"></i></button>
+<button class="op" type="submit" onclick="return myFunction()" style="background:#181818; width:auto; color:#bebebe">
+<p id="total">$ 0</p>
+<script src="/js/sendcookie.js"></script>
+</button>
+
