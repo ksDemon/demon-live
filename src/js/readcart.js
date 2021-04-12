@@ -44,6 +44,14 @@ function itemData(ID) {
          div.setAttribute("id","div2")
          var divb = document.createElement("div");
          divb.setAttribute("id","div3")
+        
+         items=getCookie("items")
+         items += (cantidad + " " + item + ",")
+         document.cookie = "items" + "="  + items + "; path=/;";
+
+         itemsID=getCookie("itemsID")
+         itemsID += (cantidad + " " + ID + ",")
+         document.cookie = "itemsID" + "="  + itemsID + "; path=/;";
 
          var para = document.createElement("p");
          var node = document.createTextNode(item + " x " + cantidad);
@@ -105,6 +113,10 @@ function itemData(ID) {
          document.cookie = "t" + "="  + total + "; path=/;";
     }
 }
+
+document.cookie = "items=; path=/;";
+document.cookie = "itemsID=; path=/;";
+
 
 while (i<100){
     cookie = getCookie(i)

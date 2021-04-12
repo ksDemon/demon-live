@@ -17,4 +17,3 @@ function getCookie(cname) {
   total = getCookie("T");
   document.getElementById("total").innerHTML = total;
 
-  

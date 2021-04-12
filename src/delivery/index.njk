@@ -8,7 +8,7 @@ layout: delivery.njk
 <div id="div1" class="container">
   <h1>Datos de Envío</h1>
     <div class="data">
-      <form action="index.html" method="get">
+      <form action="/purchase" method="GET">
       <input class"input" placeholder="Nombre" type="text" name="name" id= "nameInput" required>
       <input class"input" placeholder="Correo" type="text" name="email" id= "emailInput" required>
       <input class"input" placeholder="Teléfono" type="text" name="phone" id= "phoneInput" required>
@@ -16,12 +16,14 @@ layout: delivery.njk
       <input class"input" placeholder="Región" type="text" name="region" id= "regionInput" required>
       <input class"input" placeholder="Cuidad" type="text" name="city" id= "cityInput" required>
       <input class"input" placeholder="Dirección" type="text" name="direction" id= "directionInput" required>
+      <button class="op" type="submit" style="background:#00FF00;"><i class="fa fa-usd"></i></button>
+    <button class="op" type="submit" style="background:#181818; width:auto; color:#bebebe">
+    <p id="total">$ 0</p>
+    <script src="/js/sendcookie.js"></script>
+    <script src="/js/ordercookie.js"></script>
+    </button>
       </form>
     </div>
 </div>
 
-<button class="op" type="submit" onclick="return myFunction()" style="background:#00FF00;"><i class="fa fa-usd"></i></button>
-<button class="op" type="submit" onclick="return myFunction()" style="background:#181818; width:auto; color:#bebebe">
-<p id="total">$ 0</p>
-<script src="/js/sendcookie.js"></script>
-</button>
+
