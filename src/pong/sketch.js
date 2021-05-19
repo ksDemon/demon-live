@@ -32,7 +32,7 @@ function setup() {
     mouseX2 = largo / 2
     bonusx = 1
     bonusy = 0
-    socket = io.connect('http://demon.live:25569');
+    socket = io.connect('https://demon.live:25569');
 }
 
 function keyPressed() {
