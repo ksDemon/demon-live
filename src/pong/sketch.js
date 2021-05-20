@@ -32,7 +32,13 @@ function setup() {
     mouseX2 = largo / 2
     bonusx = 1
     bonusy = 0
-    socket = io.connect('https://localhost:25569');
+    var connectionOptions = {
+        "force new connection": true,
+        "reconnectionAttempts": "Infinity",
+        "timeout": 10000,
+        "transports": ["websocket"]
+    };
+    socket = io.connect('https://localhost:25569', connectionOptions);
 }
 
 function keyPressed() {

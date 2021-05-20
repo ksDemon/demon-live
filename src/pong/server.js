@@ -9,6 +9,7 @@ var server = https.createServer({
 server.listen(25569);
 console.log('Server started on port 25569');
 
+
 function handleRequest(req, res) {
     var pathname = req.url;
 
@@ -53,3 +54,5 @@ io.sockets.on('connection',
         });
     }
 );
+io.set('origins', '*:*');
+io.origins("*")
