@@ -4,9 +4,9 @@ var path = require('path');
 var fs = require('fs');
 var server = https.createServer({
     key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
-    cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
+    cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem')),
     cors: {
-        origin: "*"
+        origin: "*",
     }
 }, handleRequest);
 server.listen(25569);
@@ -57,5 +57,3 @@ io.sockets.on('connection',
         });
     }
 );
-io.set('origins', '*');
-io.origins("*")
