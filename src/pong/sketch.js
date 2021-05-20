@@ -36,7 +36,7 @@ function setup() {
         "force new connection": true,
         "reconnectionAttempts": "Infinity",
         "timeout": 10000,
-        "transports": ["websocket"]
+        "transports": ["websocket", 'polling', 'flashsocket']
     };
     socket = io.connect('https://localhost:25569', connectionOptions);
 }
