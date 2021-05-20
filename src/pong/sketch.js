@@ -32,6 +32,7 @@ function setup() {
     mouseX2 = largo / 2
     bonusx = 1
     bonusy = 0
+    player = 0
     socket = io.connect('https://localhost:25569');
 }
 

@@ -2,13 +2,12 @@ var https = require('https');
 var url = require('url');
 var path = require('path');
 var fs = require('fs');
+var cors = require('cors');
 var server = https.createServer({
     cors: {
-        origin: "*",
-        methods: ["GET", "POST"],
-        transports: ['websocket', 'polling'],
-        credentials: false
+        origin: 'https://pages.demon.live/pong',
     },
+    origins: ["https://pages.demon.live/pong"],
     allowEIO3: true,
     key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
     cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
@@ -36,6 +35,7 @@ function handleRequest(req, res) {
                 res.writeHead(500);
                 return res.end('Error loading ' + pathname);
             }
+
             res.writeHead(200, { 'Content-Type': contentType });
             res.end(data);
         }
