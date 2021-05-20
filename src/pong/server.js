@@ -4,11 +4,6 @@ var path = require('path');
 var fs = require('fs');
 var cors = require('cors');
 var server = https.createServer({
-    cors: {
-        origin: 'https://pages.demon.live/pong',
-    },
-    origins: ["https://pages.demon.live/pong"],
-    allowEIO3: true,
     key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
     cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
 }, handleRequest);
@@ -41,7 +36,11 @@ function handleRequest(req, res) {
         }
     );
 }
-var io = require('socket.io')(server);
+var io = require('socket.io')(server, {
+    cors: {
+        origin: "*"
+    }
+});
 io.sockets.on('connection',
     function(socket) {
         console.log("We have a new client: " + socket.id);
