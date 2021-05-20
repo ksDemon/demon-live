@@ -1,6 +1,0 @@
-function mouseDragged() {
-  fill(255);
-  noStroke();
-  circle(mouseX,mouseY,6);
-  sendmouse(mouseX,mouseY);
-}

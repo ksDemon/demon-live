@@ -1,8 +1,11 @@
-var http = require('https');
+var https = require('https');
 var url = require('url');
 var path = require('path');
 var fs = require('fs');
-var server = http.createServer(handleRequest);
+var server = https.createServer({
+    key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
+}, handleRequest);
 server.listen(25569);
 console.log('Server started on port 25569');
 
