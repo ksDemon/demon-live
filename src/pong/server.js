@@ -3,11 +3,9 @@ var url = require('url');
 var path = require('path');
 var fs = require('fs');
 var server = https.createServer({
+    origins: ["https://pages.demon.live"],
     key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
-    cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem')),
-    cors: {
-        origin: "*",
-    }
+    cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
 }, handleRequest);
 server.listen(25569);
 console.log('Server started on port 25569');
@@ -37,7 +35,7 @@ function handleRequest(req, res) {
         }
     );
 }
-var io = require('socket.io').listen(server);
+var io = require('socket.io')(server);
 io.sockets.on('connection',
     function(socket) {
         console.log("We have a new client: " + socket.id);
