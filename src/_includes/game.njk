@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<body style="background-color:#181818;">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">  
+
+<head>
+  <style>
+      body {
+        text-align:left;
+      color:#bebebe;
+      }
+    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+</head>
+
+
+<!-- Side navigation -->
+<div class="sidenav">
+<style>
+    body {
+      text-align:center;
+      color:#bebebe;
+    }
+  </style>
+<img src="/media/logo.png" alt="logo" width="20%">
+<p></p>
+<a href="/">Inicio</a>
+<a href="/about">Información</a>
+<a href="/msc">MSC</a>
+<a href="/items">Items</a>
+<a href="/cart">Carrito</a>
+<a href="/pong">Pong 4</a>
+
+</div>
+<div>
+{{ content | safe }}
+</div>
+
+</html>
+
