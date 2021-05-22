@@ -51,7 +51,6 @@ io.sockets.on('connection',
         );
         socket.on('ball',
             function(ball) {
-                console.log("Received: 'ball' " + ball.x + " " + ball.y);
                 socket.broadcast.emit('ball', ball);
             }
         );
