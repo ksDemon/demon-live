@@ -1,4 +1,4 @@
-var socket;
+var socket
 
 function setup() {
     largo = 3000
@@ -33,7 +33,7 @@ function setup() {
     bonusx = 1
     bonusy = 0
     player = 0
-    socket = io.connect('https://demon.live:25569');
+    socket = io.connect('https://demon.live:25569')
 }
 
 function keyPressed() {
@@ -69,6 +69,7 @@ function keyPressed() {
 
 function draw() {
     createCanvas(largo, ancho)
+    sendmouse(mouseX, mouseY, player);
     socket.on('mouse',
         function(data) {
             if (data.z == 1) {
@@ -82,14 +83,12 @@ function draw() {
             }
         }
     )
-    if (player2 || player3 || player4) {
-        socket.on('ball',
-            function(ball) {
-                ballx = ball.x
-                bally = ball.y
-            }
-        )
-    }
+    socket.on('ball',
+        function(ball) {
+            ballx = ball.x
+            bally = ball.y
+        }
+    )
     rgbRed += (-1) ** bRed
     rgbGreen += (-1) ** bGreen
     rgbBlue += (-1) ** bBlue
@@ -127,82 +126,6 @@ function draw() {
     rect(mouseX2 - 125, 40, 250, 60)
     rect(largo - 100, mouseY2 - 125, 60, 250)
     square(ballx, bally, 60)
-    if (start && player1) {
-        ballx += int(bonusx * speed * (-1) ** bx)
-        bally += int(bonusy * speed * (-1) ** by)
-        sendball(ballx, bally)
-
-        if (ballx >= largo - 160 && bally <= mouseY2 + 125 && mouseY2 - 125 - 60 <= bally && bx % 2 == 0) {
-            bx += 1
-            by = 0
-            if (bally + 30 <= mouseY2) {
-                by = 1
-            }
-            speed += 0.5
-            bonusy = abs(mouseY2 - bally - 30) / 125
-            bonusx = 1 + abs(125 - abs(bally - 30 - mouseY2)) / 125
-        }
-        if (bally <= 100 && ballx <= mouseX2 + 125 && mouseX2 - 125 - 60 <= ballx && by % 2 == 1) {
-            by += 1
-            bx = 0
-            if (ballx + 30 <= mouseX2) {
-                bx = 1
-            }
-            speed += 0.5
-            bonusx = abs(mouseX2 - ballx - 30) / 125
-            bonusy = 1 + abs(125 - abs(ballx - 30 - mouseX2)) / 125
-        }
-        if (ballx <= 100 && bally <= mouseY1 + 125 && mouseY1 - 125 - 60 <= bally && bx % 2 == 1) {
-            bx += 1
-            by = 0
-            if (bally + 30 <= mouseY1) {
-                by = 1
-            }
-            speed += 0.5
-            bonusy = abs(mouseY1 - bally - 30) / 125
-            bonusx = 1 + abs(125 - abs(bally - 30 - mouseY1)) / 125
-        }
-        if (bally >= ancho - 160 && ballx <= mouseX1 + 125 && mouseX1 - 125 - 60 <= ballx && by % 2 == 0) {
-            by += 1
-            bx = 0
-            if (ballx + 30 <= mouseX1) {
-                bx = 1
-            }
-            speed += 0.5
-            bonusx = abs(mouseX1 - ballx - 30) / 125
-            bonusy = 1 + abs(125 - abs(ballx - 30 - mouseX1)) / 125
-        }
-        if (bally <= -60 || bally >= ancho) {
-            ballx = largo / 2 - 30
-            bally = ancho / 2 - 30
-            speed = 10
-            bx = 1
-            by = 1
-            bonusx = 1
-            bonusy = 0
-        }
-        if (ballx <= -60 || ballx >= largo) {
-            ballx = largo / 2 - 30
-            bally = ancho / 2 - 30
-            speed = 10
-            bx = 1
-            by = 1
-            bonusx = 1
-            bonusy = 0
-        }
-    }
-}
-
-function mouseMoved() {
-    sendmouse(mouseX, mouseY, player);
-}
-
-function sendball(ballx, bally) {
-    var ball = {
-        x: ballx,
-        y: bally,
-    }
-    socket.emit('ball', ball)
 }
 
 function sendmouse(xpos, ypos, player) {
