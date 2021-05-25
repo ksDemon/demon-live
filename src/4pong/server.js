@@ -2,7 +2,7 @@ var https = require('https')
 var url = require('url')
 var path = require('path')
 var fs = require('fs')
-var cors = require('cors')
+
 var server = https.createServer({
     key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
     cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'))
@@ -16,7 +16,7 @@ ballx = largo / 2 - 30
 bally = ancho / 2 - 30
 bx = 1
 by = 1
-speed = 5
+speed = 3
 start = false
 mouseY1 = ancho / 2
 mouseY2 = ancho / 2
@@ -134,7 +134,7 @@ io.sockets.on('connection',
                 if (bally <= -60 || bally >= ancho) {
                     ballx = largo / 2 - 30
                     bally = ancho / 2 - 30
-                    speed = 5
+                    speed = 3
                     bx = 1
                     by = 1
                     bonusx = 1
@@ -143,7 +143,7 @@ io.sockets.on('connection',
                 if (ballx <= -60 || ballx >= largo) {
                     ballx = largo / 2 - 30
                     bally = ancho / 2 - 30
-                    speed = 5
+                    speed = 3
                     bx = 1
                     by = 1
                     bonusx = 1
