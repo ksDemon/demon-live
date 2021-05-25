@@ -1,4 +1,11 @@
 var socket
+let hit
+let score
+
+function preload() {
+    hit = loadSound('./media/hit.mp3')
+    score = loadSound('./media/score.mp3')
+}
 
 function setup() {
     largo = 3000
@@ -34,6 +41,45 @@ function setup() {
     bonusy = 0
     player = 0
     socket = io.connect('https://demon.live:25569')
+    hit = loadSound('./media/hit.mp3')
+    score = loadSound('./media/score.mp3')
+
+    socket.on('mouse',
+        function(data) {
+            if (data.z == 1) {
+                mouseY1 = data.y
+            } else if (data.z == 2) {
+                mouseX2 = data.x
+            } else if (data.z == 3) {
+                mouseY2 = data.y
+            } else if (data.z == 4) {
+                mouseX1 = data.x
+            }
+        }
+    )
+
+    socket.on('ball',
+        function(ball) {
+            ballx = ball.x
+            bally = ball.y
+        }
+    )
+
+    socket.on('hit',
+        function() {
+            if (!(hit.isPlaying())) {
+                hit.play()
+            }
+        }
+    )
+
+    socket.on('score',
+        function() {
+            if (!(score.isPlaying())) {
+                score.play()
+            }
+        }
+    )
 }
 
 function keyPressed() {
@@ -70,25 +116,7 @@ function keyPressed() {
 function draw() {
     createCanvas(largo, ancho)
     sendmouse(mouseX, mouseY, player);
-    socket.on('mouse',
-        function(data) {
-            if (data.z == 1) {
-                mouseY1 = data.y
-            } else if (data.z == 2) {
-                mouseX2 = data.x
-            } else if (data.z == 3) {
-                mouseY2 = data.y
-            } else if (data.z == 4) {
-                mouseX1 = data.x
-            }
-        }
-    )
-    socket.on('ball',
-        function(ball) {
-            ballx = ball.x
-            bally = ball.y
-        }
-    )
+
     rgbRed += (-1) ** bRed
     rgbGreen += (-1) ** bGreen
     rgbBlue += (-1) ** bBlue

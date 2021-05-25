@@ -89,7 +89,7 @@ io.sockets.on('connection',
                     x: ballx,
                     y: bally,
                 }
-                socket.broadcast.emit('ball', ball);
+                socket.broadcast.emit('ball', ball)
 
                 if (ballx >= largo - 160 && bally <= mouseY2 + 125 && mouseY2 - 125 - 60 <= bally && bx % 2 == 0) {
                     bx += 1
@@ -100,6 +100,7 @@ io.sockets.on('connection',
                     speed += 0.5
                     bonusy = Math.abs(mouseY2 - bally - 30) / 125
                     bonusx = 1 + Math.abs(125 - Math.abs(bally - 30 - mouseY2)) / 125
+                    socket.broadcast.emit('hit', 1)
                 }
                 if (bally <= 100 && ballx <= mouseX2 + 125 && mouseX2 - 125 - 60 <= ballx && by % 2 == 1) {
                     by += 1
@@ -110,6 +111,7 @@ io.sockets.on('connection',
                     speed += 0.5
                     bonusx = Math.abs(mouseX2 - ballx - 30) / 125
                     bonusy = 1 + Math.abs(125 - Math.abs(ballx - 30 - mouseX2)) / 125
+                    socket.broadcast.emit('hit', 1)
                 }
                 if (ballx <= 100 && bally <= mouseY1 + 125 && mouseY1 - 125 - 60 <= bally && bx % 2 == 1) {
                     bx += 1
@@ -120,6 +122,7 @@ io.sockets.on('connection',
                     speed += 0.5
                     bonusy = Math.abs(mouseY1 - bally - 30) / 125
                     bonusx = 1 + Math.abs(125 - Math.abs(bally - 30 - mouseY1)) / 125
+                    socket.broadcast.emit('hit', 1)
                 }
                 if (bally >= ancho - 160 && ballx <= mouseX1 + 125 && mouseX1 - 125 - 60 <= ballx && by % 2 == 0) {
                     by += 1
@@ -130,6 +133,7 @@ io.sockets.on('connection',
                     speed += 0.5
                     bonusx = Math.abs(mouseX1 - ballx - 30) / 125
                     bonusy = 1 + Math.abs(125 - Math.abs(ballx - 30 - mouseX1)) / 125
+                    socket.broadcast.emit('hit')
                 }
                 if (bally <= -60 || bally >= ancho) {
                     ballx = largo / 2 - 30
@@ -139,6 +143,7 @@ io.sockets.on('connection',
                     by = 1
                     bonusx = 1
                     bonusy = 0
+                    socket.broadcast.emit('score')
                 }
                 if (ballx <= -60 || ballx >= largo) {
                     ballx = largo / 2 - 30
@@ -148,6 +153,7 @@ io.sockets.on('connection',
                     by = 1
                     bonusx = 1
                     bonusy = 0
+                    socket.broadcast.emit('score')
                 }
             }
         }, 20)
