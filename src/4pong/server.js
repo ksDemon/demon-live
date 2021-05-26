@@ -24,6 +24,11 @@ mouseX1 = largo / 2
 mouseX2 = largo / 2
 bonusx = 1
 bonusy = 0
+score1 = 0
+score2 = 0
+score3 = 0
+score4 = 0
+lasthit = 0
 
 function handleRequest(req, res) {
     var pathname = req.url
@@ -97,10 +102,11 @@ io.sockets.on('connection',
                     if (bally + 30 <= mouseY2) {
                         by = 1
                     }
-                    speed += 0.5
+                    speed += 0.2
                     bonusy = Math.abs(mouseY2 - bally - 30) / 125
                     bonusx = 1 + Math.abs(125 - Math.abs(bally - 30 - mouseY2)) / 125
                     socket.broadcast.emit('hit', 1)
+                    lasthit = 1
                 }
                 if (bally <= 100 && ballx <= mouseX2 + 125 && mouseX2 - 125 - 60 <= ballx && by % 2 == 1) {
                     by += 1
@@ -108,10 +114,11 @@ io.sockets.on('connection',
                     if (ballx + 30 <= mouseX2) {
                         bx = 1
                     }
-                    speed += 0.5
+                    speed += 0.2
                     bonusx = Math.abs(mouseX2 - ballx - 30) / 125
                     bonusy = 1 + Math.abs(125 - Math.abs(ballx - 30 - mouseX2)) / 125
                     socket.broadcast.emit('hit', 1)
+                    lasthit = 2
                 }
                 if (ballx <= 100 && bally <= mouseY1 + 125 && mouseY1 - 125 - 60 <= bally && bx % 2 == 1) {
                     bx += 1
@@ -119,10 +126,11 @@ io.sockets.on('connection',
                     if (bally + 30 <= mouseY1) {
                         by = 1
                     }
-                    speed += 0.5
+                    speed += 0.2
                     bonusy = Math.abs(mouseY1 - bally - 30) / 125
                     bonusx = 1 + Math.abs(125 - Math.abs(bally - 30 - mouseY1)) / 125
                     socket.broadcast.emit('hit', 1)
+                    lasthit = 3
                 }
                 if (bally >= ancho - 160 && ballx <= mouseX1 + 125 && mouseX1 - 125 - 60 <= ballx && by % 2 == 0) {
                     by += 1
@@ -130,10 +138,11 @@ io.sockets.on('connection',
                     if (ballx + 30 <= mouseX1) {
                         bx = 1
                     }
-                    speed += 0.5
+                    speed += 0.2
                     bonusx = Math.abs(mouseX1 - ballx - 30) / 125
                     bonusy = 1 + Math.abs(125 - Math.abs(ballx - 30 - mouseX1)) / 125
                     socket.broadcast.emit('hit')
+                    lasthit = 4
                 }
                 if (bally <= -60 || bally >= ancho) {
                     ballx = largo / 2 - 30
@@ -143,7 +152,15 @@ io.sockets.on('connection',
                     by = 1
                     bonusx = 1
                     bonusy = 0
-                    socket.broadcast.emit('score')
+                    score()
+                    var scoreboard = {
+                        a: score1,
+                        b: score2,
+                        c: score3,
+                        d: score4,
+                    }
+                    socket.broadcast.emit('score', scoreboard)
+                    lasthit = 0
                 }
                 if (ballx <= -60 || ballx >= largo) {
                     ballx = largo / 2 - 30
@@ -153,9 +170,26 @@ io.sockets.on('connection',
                     by = 1
                     bonusx = 1
                     bonusy = 0
-                    socket.broadcast.emit('score')
+                    score()
+                    var scoreboard = {
+                        a: score1,
+                        b: score2,
+                        c: score3,
+                        d: score4,
+                    }
+                    socket.broadcast.emit('score', scoreboard)
+                    lasthit = 0
+
+
                 }
             }
         }, 20)
     }
 )
+
+function score() {
+    if (lasthit == 1) { return score1 += 1 }
+    if (lasthit == 2) { return score2 += 1 }
+    if (lasthit == 3) { return score3 += 1 }
+    if (lasthit == 4) { return score4 += 1 }
+}

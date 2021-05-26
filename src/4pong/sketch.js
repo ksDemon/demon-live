@@ -40,9 +40,14 @@ function setup() {
     bonusx = 1
     bonusy = 0
     player = 0
+    score1 = 0
+    score2 = 0
+    score3 = 0
+    score4 = 0
     socket = io.connect('https://demon.live:25569')
     hit = loadSound('./media/hit.mp3')
-    score = loadSound('./media/score.mp3')
+    scoresound = loadSound('./media/score.mp3')
+    textAlign(CENTER, CENTER)
 
     socket.on('mouse',
         function(data) {
@@ -74,9 +79,13 @@ function setup() {
     )
 
     socket.on('score',
-        function() {
-            if (!(score.isPlaying())) {
-                score.play()
+        function(scoreboard) {
+            score1 = scoreboard.a
+            score2 = scoreboard.b
+            score3 = scoreboard.c
+            score4 = scoreboard.d
+            if (!(scoresound.isPlaying())) {
+                scoresound.play()
             }
         }
     )
@@ -149,10 +158,19 @@ function draw() {
         mouseX1 = mouseX
         player = 4
     }
+    textSize(40)
     rect(mouseX1 - 125, largo - 100, 250, 60)
+    text(str(score4), mouseX1, largo - 70)
+
     rect(40, mouseY1 - 125, 60, 250)
+    text(str(score3), 70, mouseY1)
+
     rect(mouseX2 - 125, 40, 250, 60)
+    text(str(score2), mouseX2, 70)
+
     rect(largo - 100, mouseY2 - 125, 60, 250)
+    text(str(score1), largo - 70, mouseY2)
+
     square(ballx, bally, 60)
 }
 
