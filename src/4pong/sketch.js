@@ -40,10 +40,6 @@ function setup() {
     bonusx = 1
     bonusy = 0
     player = 0
-    score1 = 0
-    score2 = 0
-    score3 = 0
-    score4 = 0
     socket = io.connect('https://demon.live:25569')
     hit = loadSound('./media/hit.mp3')
     scoresound = loadSound('./media/score.mp3')

@@ -99,7 +99,7 @@
 
 #pongFrame {
     left: 0;
-    top: 40px;
+    top: 0;
     z-index: 10;
     zoom: 0.25;
     width: 400%;
@@ -112,8 +112,8 @@
 
 #gamediv {
     position: absolute;
-    left: 40%;
-    top: 40px;
+    left: 37%;
+    top: 20px;
     height: 750px;
     width: 750px;
     z-index: 10;
