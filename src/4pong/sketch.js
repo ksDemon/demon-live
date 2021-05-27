@@ -4,7 +4,16 @@ let score
 
 function preload() {
     hit = loadSound('./media/hit.mp3')
-    score = loadSound('./media/score.mp3')
+    scoresound = loadSound('./media/score.mp3')
+    up = loadImage('./media/up.png');
+    down = loadImage('./media/down.png');
+    left = loadImage('./media/left.png');
+    right = loadImage('./media/right.png');
+    upw = loadImage('./media/upw.png');
+    downw = loadImage('./media/downw.png');
+    leftw = loadImage('./media/leftw.png');
+    rightw = loadImage('./media/rightw.png');
+
 }
 
 function setup() {
@@ -13,36 +22,29 @@ function setup() {
     createCanvas(largo, ancho)
     ballx = largo / 2 - 30
     bally = ancho / 2 - 30
-    bx = 1
-    by = 1
-    speed = 1
     score1 = 0
     score2 = 0
     score3 = 0
     score4 = 0
-    rgbRed = 128
+    rgbRed = 125
     rgbGreen = 0
-    rgbBlue = 254
+    rgbBlue = 253
     bRed = 0
     bGreen = 0
     bBlue = 0
-    speed = 10
     player1 = false
     player2 = false
     player3 = false
     player4 = false
     selection = true
-    start = false
+    click = false
     mouseY1 = ancho / 2
     mouseY2 = ancho / 2
     mouseX1 = largo / 2
     mouseX2 = largo / 2
-    bonusx = 1
-    bonusy = 0
     player = 0
     socket = io.connect('https://demon.live:25569')
-    hit = loadSound('./media/hit.mp3')
-    scoresound = loadSound('./media/score.mp3')
+
     textAlign(CENTER, CENTER)
 
     socket.on('mouse',
@@ -87,73 +89,31 @@ function setup() {
     )
 }
 
-function keyPressed() {
-    if (keyCode === LEFT_ARROW && selection) {
-        player1 = true
-        player2 = false
-        player3 = false
-        player4 = false
-        selection = false
-    }
-    if (keyCode === RIGHT_ARROW && selection) {
-        player1 = false
-        player2 = false
-        player3 = true
-        player4 = false
-        selection = false
-    }
-    if (keyCode === UP_ARROW && selection) {
-        player1 = false
-        player2 = true
-        player3 = false
-        player4 = false
-        selection = false
-    }
-    if (keyCode === DOWN_ARROW && selection) {
-        player1 = false
-        player2 = false
-        player3 = false
-        player4 = true
-        selection = false
-    }
-}
 
 function draw() {
     createCanvas(largo, ancho)
     sendmouse(mouseX, mouseY, player);
 
-    rgbRed += (-1) ** bRed
-    rgbGreen += (-1) ** bGreen
-    rgbBlue += (-1) ** bBlue
-    if (rgbRed == 255 || rgbRed == 0) {
-        bRed += 1
+    rgbBackground()
+    if (selection) {
+        drawSelection()
     }
-    if (rgbGreen == 255 || rgbGreen == 0) {
-        bGreen += 1
+    definePlayer()
+    drawMain()
+}
+
+function sendmouse(xpos, ypos, player) {
+    var data = {
+        x: xpos,
+        y: ypos,
+        z: player
     }
-    if (rgbBlue == 255 || rgbBlue == 0) {
-        bBlue += 1
-    }
-    background(rgbRed, rgbGreen, rgbBlue)
-    if (mouseX1 != largo / 2 && mouseX2 != largo / 2 && mouseY1 != largo / 2 && mouseY2 != largo / 2) {
-        start = true
-    }
-    if (player1) {
-        mouseY1 = mouseY
-        player = 1
-    }
-    if (player2) {
-        mouseX2 = mouseX
-        player = 2
-    }
-    if (player3) {
-        mouseY2 = mouseY
-        player = 3
-    }
-    if (player4) {
-        mouseX1 = mouseX
-        player = 4
-    }
+    socket.emit('mouse', data)
+}
+
+function drawMain() {
+    textFont('Helvetica')
+    strokeWeight(0)
     textSize(40)
     rect(mouseX1 - 125, largo - 100, 250, 60)
     text(str(score4), mouseX1, largo - 70)
@@ -170,11 +130,82 @@ function draw() {
     square(ballx, bally, 60)
 }
 
-function sendmouse(xpos, ypos, player) {
-    var data = {
-        x: xpos,
-        y: ypos,
-        z: player
+function drawSelection() {
+    image(up, largo / 2 - 100, ancho / 2 - 750, 200, 200)
+    image(down, largo / 2 - 100, ancho / 2 + 750 - 200, 200, 200)
+    image(left, largo / 2 - 750, ancho / 2 - 100, 200, 200)
+    image(right, largo / 2 + 750 - 200, ancho / 2 - 100, 200, 200)
+
+    if ((largo / 2 - 100 <= mouseX && mouseX <= largo / 2 - 100 + 200) && (ancho / 2 - 750 <= mouseY && mouseY <= ancho / 2 - 750 + 200)) {
+        image(upw, largo / 2 - 100, ancho / 2 - 750, 200, 200)
+        if (click) {
+            player = 2
+            selection = false
+        }
     }
-    socket.emit('mouse', data)
+
+    if ((largo / 2 - 100 <= mouseX && mouseX <= largo / 2 - 100 + 200) && (ancho / 2 + 750 - 200 <= mouseY && mouseY <= ancho / 2 + 750 - 200 + 200)) {
+        image(downw, largo / 2 - 100, ancho / 2 + 750 - 200, 200, 200)
+        if (click) {
+            player = 4
+            selection = false
+        }
+    }
+
+    if ((largo / 2 - 750 <= mouseX && mouseX <= largo / 2 - 750 + 200) && (ancho / 2 - 100 <= mouseY && mouseY <= ancho / 2 - 100 + 200)) {
+        image(leftw, largo / 2 - 750, ancho / 2 - 100, 200, 200)
+        if (click) {
+            player = 1
+            selection = false
+        }
+    }
+
+    if ((largo / 2 + 750 - 200 <= mouseX && mouseX <= largo / 2 + 750 - 200 + 200) && (ancho / 2 - 100 <= mouseY && mouseY <= ancho / 2 - 100 + 200)) {
+        image(rightw, largo / 2 + 750 - 200, ancho / 2 - 100, 200, 200)
+        if (click) {
+            player = 3
+            selection = false
+        }
+    }
+
+
+}
+
+function rgbBackground() {
+    rgbRed += (-1) ** bRed
+    rgbGreen += (-1) ** bGreen
+    rgbBlue += (-1) ** bBlue
+    if (rgbRed == 255 || rgbRed == 0) {
+        bRed += 1
+    }
+    if (rgbGreen == 255 || rgbGreen == 0) {
+        bGreen += 1
+    }
+    if (rgbBlue == 255 || rgbBlue == 0) {
+        bBlue += 1
+    }
+    background(rgbRed, rgbGreen, rgbBlue)
+}
+
+function definePlayer() {
+    if (player == 1) {
+        mouseY1 = mouseY
+    }
+    if (player == 2) {
+        mouseX2 = mouseX
+    }
+    if (player == 3) {
+        mouseY2 = mouseY
+    }
+    if (player == 4) {
+        mouseX1 = mouseX
+    }
+}
+
+function mousePressed() {
+    click = true
+}
+
+function mouseReleased() {
+    click = false
 }
