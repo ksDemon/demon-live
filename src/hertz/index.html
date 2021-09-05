@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/brands.min.css">
+    <link rel="stylesheet" href="./css/fontawesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Hercios Modpack</title>
+  </head>
+
+  <body>
+
+    <!-- Window -->
+    <div class="big-container">
+      <div class="window grow scroller">
+        <h2 id="nombre">Bienvenido</h2>
+        <p><a id="link" href=''> Descargar Modpack</a></p>
+        <img id="imagemain" src="assets/mods/hercios.png" alt="main">
+        <p id="desc">Para instalar el paquete de mods sigue las instrucciones</p>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="content">
+      <div class="sidebar">
+        <ul id="myUL">
+          <img id="logo" class="grow rotate" src="assets/logo.svg" alt="Logo">
+          <input type="text" id="myInput" onkeyup="searchList()" placeholder="Busca un mod...">
+        </ul>
+      </div>
+    </div>
+
+  </body>
+  
+    
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Custom Scripts-->
+    <script src="./js/readData.js"></script>
+    <script src="./js/searchList.js"></script>
+</body>
+</html>

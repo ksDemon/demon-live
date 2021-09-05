@@ -1,0 +1,28 @@
+---
+title: Bongard Problems
+layout: base.njk
+---
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./js/jquery.js"></script>
+</head>
+
+<div class="container">
+  <h1>Bongard Problems</h1>
+
+  <input type="file" onchange="loadFile(event)" accept="image/gif, image/jpeg, image/png" name="image" id="file" style="display: none;">
+  <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+  <img id="bp"/>	
+
+<button class="op" style="background:#00FF00;" onclick="postImage();"><i class="fa fa-arrow-right"></i></button>
+
+</div>
+
+<script src="./js/PostBP.js"></script>
+
+<script>
+var loadFile = function(event) {
+	var image = document.getElementById('bp');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script>
